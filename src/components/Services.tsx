@@ -60,7 +60,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       className={`group relative card-sharp p-7 cursor-default ${service.hoverBorder} transition-all duration-300`}
     >
       {/* Number */}
-      <div className="text-6xl font-black text-white/[0.04] group-hover:text-white/[0.07] transition-colors leading-none mb-5 tracking-tighter select-none">
+      <div className="text-6xl font-black text-accent transition-colors leading-none mb-5 tracking-tighter select-none">
         {num}
       </div>
 
@@ -127,10 +127,10 @@ export default function Services() {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <div className="h-px w-6 bg-accent" />
-              <span className="text-accent text-xs font-bold tracking-[0.25em] uppercase">ייעוץ ראשוני חינמי</span>
+              <span className="text-accent text-xs font-bold tracking-[0.25em] uppercase">ייעוץ ראשוני חינם</span>
             </div>
             <p className="text-white/50 text-sm max-w-lg">
-              לא בטוח מאיפה להתחיל? נשמח להקדיש לך 30 דקות ייעוץ חינמי — נבין את הצרכים שלך ונמליץ על הפתרון המדויק.
+              לא בטוח מאיפה להתחיל? נשמח להקדיש לך 30 דקות ייעוץ חינם — נבין את הצרכים שלך ונמליץ על הפתרון המדויק.
             </p>
           </div>
           <a

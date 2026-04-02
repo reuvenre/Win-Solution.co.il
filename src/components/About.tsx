@@ -93,7 +93,7 @@ export default function About() {
                 transition={{ delay: 0.15 + i * 0.1, duration: 0.5, ease: 'easeOut' }}
                 className="group flex gap-6 py-7 border-b border-white/6 last:border-0 hover:border-white/12 transition-colors duration-300"
               >
-                <span className="text-3xl font-black text-white/[0.06] group-hover:text-white/[0.10] transition-colors leading-none tracking-tighter shrink-0 mt-1">
+                <span className="text-3xl font-black text-accent transition-colors leading-none tracking-tighter shrink-0 mt-1">
                   {v.num}
                 </span>
                 <div>

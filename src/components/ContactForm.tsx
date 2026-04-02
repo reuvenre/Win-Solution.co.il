@@ -110,7 +110,7 @@ export default function ContactForm() {
               {[
                 { icon: '📍', label: 'ישראל' },
                 { icon: '⏱', label: 'מענה תוך 24 שעות' },
-                { icon: '💬', label: 'ייעוץ ראשוני חינמי' },
+                { icon: '💬', label: 'ייעוץ ראשוני חינם' },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-3">
                   <div className="w-8 h-8 border border-white/8 flex items-center justify-center text-sm shrink-0">
