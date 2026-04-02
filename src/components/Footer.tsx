@@ -39,7 +39,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-white/30 text-xs">פעיל ומוכן לעבודה</span>
+              <span className="text-white/30 text-xs">הבית שלכם למערכות מתקדמות</span>
             </div>
           </div>
 
