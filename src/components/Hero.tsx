@@ -3,122 +3,149 @@ import { motion, type Easing } from 'framer-motion'
 const EASE: Easing = 'easeOut'
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: EASE },
+    transition: { delay: i * 0.12, duration: 0.6, ease: EASE },
   }),
 }
+
+const techStack = [
+  'Make.com', 'Zapier', 'Airtable', 'OpenAI', 'WhatsApp API',
+  'React', 'Node.js', 'Webflow', 'n8n', 'Google Workspace',
+]
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16"
     >
-      {/* Background glow blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00d4ff]/8 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#0066ff]/8 rounded-full blur-[100px]" />
+      {/* Grid background */}
+      <div className="absolute inset-0 grid-bg pointer-events-none" />
+
+      {/* Radial glow */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(0,212,255,0.07)_0%,transparent_70%)]" />
+
+      {/* Large background text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <span
+          className="hero-bg-text font-black text-white leading-none tracking-tighter whitespace-nowrap"
+        >
+          WIN
+        </span>
       </div>
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.03] grid-overlay" />
+      {/* Top border line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <motion.div
-          custom={0}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-sm text-accent mb-8"
-        >
-          <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          אוטומציות חכמות ובנייית אתרים לעסקים מתקדמים
-        </motion.div>
-
-        <motion.h1
-          custom={1}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="text-5xl md:text-7xl font-black leading-tight mb-6"
-        >
-          חסוך זמן.{' '}
-          <span className="text-gradient">הכפל הכנסות.</span>
-          <br />
-          תתקדם עם AI.
-        </motion.h1>
-
-        <motion.p
-          custom={2}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
-        >
-          אנחנו מנגישים לעסקים קטנים ובינוניים את הטכנולוגיות המתקדמות ביותר —
-          אוטומציות, בינה מלאכותית ואתרים חכמים — כדי שתוכל להתמקד במה שחשוב
-          באמת.
-        </motion.p>
-
-        <motion.div
-          custom={3}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <a
-            href="#contact"
-            className="bg-gradient-accent text-white font-bold px-8 py-3.5 rounded-lg text-base transition-all duration-300 hover:glow-accent hover:-translate-y-1 w-full sm:w-auto text-center"
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
+        <div className="max-w-3xl">
+          {/* Label */}
+          <motion.div
+            custom={0}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="flex items-center gap-3 mb-8"
           >
-            קבל ייעוץ חינם
-          </a>
-          <a
-            href="#services"
-            className="glass border border-white/20 text-white/80 hover:text-accent hover:border-accent font-semibold px-8 py-3.5 rounded-lg text-base transition-all duration-300 w-full sm:w-auto text-center"
-          >
-            גלה את השירותים ↓
-          </a>
-        </motion.div>
+            <div className="h-px w-10 bg-accent shrink-0" />
+            <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase">
+              אוטומציות · AI · פיתוח אתרים
+            </span>
+          </motion.div>
 
-        {/* Stats */}
+          {/* Headline */}
+          <motion.h1
+            custom={1}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="hero-headline font-black leading-[0.88] tracking-tighter mb-8 text-white"
+          >
+            חסוך זמן.
+            <br />
+            <span className="text-gradient">הכפל הכנסות.</span>
+            <br />
+            <span className="text-white/30">תתקדם עם AI.</span>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p
+            custom={2}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="text-base md:text-lg text-white/45 max-w-lg leading-relaxed mb-10 font-light"
+          >
+            אנחנו מנגישים לעסקים קטנים ובינוניים את הטכנולוגיות המתקדמות ביותר —
+            אוטומציות, בינה מלאכותית ואתרים חכמים — כדי שתוכל להתמקד במה שחשוב.
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            custom={3}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <a
+              href="#contact"
+              className="group inline-flex items-center justify-center gap-2 bg-accent text-black font-black text-sm px-8 py-4 tracking-wider uppercase transition-all duration-200 hover:bg-white w-full sm:w-auto"
+            >
+              קבל ייעוץ חינם
+              <span className="group-hover:-translate-x-1 transition-transform duration-200 text-base">←</span>
+            </a>
+            <a
+              href="#services"
+              className="inline-flex items-center justify-center gap-2 border border-white/15 text-white/55 hover:text-accent hover:border-accent/60 font-semibold text-sm px-8 py-4 tracking-wide transition-all duration-300 w-full sm:w-auto"
+            >
+              גלה את השירותים
+            </a>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            custom={4}
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="mt-16 pt-8 border-t border-white/8 grid grid-cols-3 gap-8 max-w-xs"
+          >
+            {[
+              { value: '50+', label: 'לקוחות מרוצים' },
+              { value: '200+', label: 'אוטומציות' },
+              { value: '95%', label: 'חיסכון בזמן' },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="text-3xl md:text-4xl font-black text-accent tracking-tighter leading-none">
+                  {s.value}
+                </div>
+                <div className="text-[11px] text-white/35 mt-1.5 font-medium tracking-wide">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Tech marquee strip */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-white/5 py-3 overflow-hidden bg-white/[0.015]">
         <motion.div
-          custom={4}
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="mt-16 grid grid-cols-3 gap-6 max-w-lg mx-auto"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          className="flex gap-14 whitespace-nowrap"
         >
-          {[
-            { value: '50+', label: 'לקוחות מרוצים' },
-            { value: '200+', label: 'אוטומציות בפעילות' },
-            { value: '95%', label: 'חיסכון בזמן' },
-          ].map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-2xl md:text-3xl font-black text-gradient">{s.value}</div>
-              <div className="text-xs text-white/50 mt-1">{s.label}</div>
-            </div>
+          {[...techStack, ...techStack].map((tech, i) => (
+            <span key={i} className="text-[11px] text-white/20 font-mono tracking-[0.2em] uppercase">
+              {tech}
+            </span>
           ))}
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30"
-      >
-        <span className="text-xs">גלול למטה</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-0.5 h-8 bg-gradient-to-b from-accent/50 to-transparent rounded-full"
-        />
-      </motion.div>
     </section>
   )
 }
