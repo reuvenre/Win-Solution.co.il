@@ -47,7 +47,7 @@ export default function AutomationBackground() {
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},0.18)`
+        ctx.fillStyle = `rgba(${ACCENT_R},${ACCENT_G},${ACCENT_B},0.45)`
         ctx.fill()
       }
 
@@ -57,7 +57,7 @@ export default function AutomationBackground() {
           const dy = particles[i].y - particles[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
           if (dist < CONNECTION_DIST) {
-            const alpha = (1 - dist / CONNECTION_DIST) * 0.055
+            const alpha = (1 - dist / CONNECTION_DIST) * 0.18
             ctx.beginPath()
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)
