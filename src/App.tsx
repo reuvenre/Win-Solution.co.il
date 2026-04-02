@@ -1,4 +1,5 @@
 import './App.css'
+import AutomationBackground from './components/AutomationBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -11,7 +12,8 @@ import WhatsApp from './components/WhatsApp'
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#05050a] text-white overflow-x-hidden">
+      <AutomationBackground />
       <Navbar />
       <main>
         <Hero />

@@ -22,21 +22,6 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16"
     >
-      {/* Grid background */}
-      <div className="absolute inset-0 grid-bg pointer-events-none" />
-
-      {/* Radial glow */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(0,212,255,0.07)_0%,transparent_70%)]" />
-
-      {/* Large background text */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span
-          className="hero-bg-text font-black text-white leading-none tracking-tighter whitespace-nowrap"
-        >
-          WIN
-        </span>
-      </div>
-
       {/* Top border line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 

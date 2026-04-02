@@ -88,8 +88,6 @@ export default function Services() {
 
   return (
     <section id="services" className="py-28 px-6 relative">
-      <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
-
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section header */}
         <motion.div
