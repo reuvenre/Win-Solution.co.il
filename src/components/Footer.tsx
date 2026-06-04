@@ -15,6 +15,7 @@ const footerLinks = {
   'יצירת קשר': [
     { label: 'ייעוץ ראשוני חינם', href: '#scheduling' },
     { label: 'שלח הודעה', href: '#contact' },
+    { label: 'win.solutions.office@gmail.com', href: 'mailto:win.solutions.office@gmail.com' },
     { label: 'וואטסאפ', href: '#contact' },
   ],
 }

@@ -177,7 +177,7 @@ export default function ContactForm() {
                   <input
                     {...register('email')}
                     id="contact-email"
-                    placeholder="you@example.com"
+                    placeholder="win.solutions.office@gmail.com"
                     type="email"
                     dir="ltr"
                     className={inputClass}
