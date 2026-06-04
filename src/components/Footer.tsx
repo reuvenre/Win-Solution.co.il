@@ -34,7 +34,7 @@ export default function Footer() {
               <img src="/logo.png" alt="WIN Solutions" className="h-9 w-9 rounded-full object-cover" />
               <span className="text-white font-black text-sm tracking-widest uppercase">WIN SOLUTIONS</span>
             </div>
-            <p className="text-white/35 text-sm leading-relaxed font-light mb-6">
+            <p className="text-white/55 text-sm leading-relaxed font-light mb-6">
               מנגישים לעסקים קטנים ובינוניים את הטכנולוגיות המתקדמות ביותר — אוטומציות, AI ואתרים חכמים.
             </p>
             <div className="flex items-center gap-1.5">
@@ -52,7 +52,7 @@ export default function Footer() {
                   <li key={l.label}>
                     <a
                       href={l.href}
-                      className="text-white/35 text-sm hover:text-accent transition-colors duration-200"
+                      className="text-white/55 text-sm hover:text-accent transition-colors duration-200"
                     >
                       {l.label}
                     </a>
@@ -70,8 +70,8 @@ export default function Footer() {
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-white/25 text-xs">
           <p>© {year} WIN SOLUTIONS בע״מ. כל הזכויות שמורות.</p>
           <div className="flex items-center gap-5">
-            <span className="hover:text-white/50 transition-colors cursor-pointer">מדיניות פרטיות</span>
-            <span className="hover:text-white/50 transition-colors cursor-pointer">תנאי שימוש</span>
+            <a href="#" className="hover:text-white/50 transition-colors">מדיניות פרטיות</a>
+            <a href="#" className="hover:text-white/50 transition-colors">תנאי שימוש</a>
             <span className="text-white/15">|</span>
             <span>עוצב ופותח בישראל 🇮🇱</span>
           </div>

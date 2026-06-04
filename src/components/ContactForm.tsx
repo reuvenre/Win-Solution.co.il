@@ -27,17 +27,19 @@ const services = [
 function Field({
   label,
   error,
+  htmlFor,
   children,
 }: {
   label: string
   error?: string
+  htmlFor: string
   children: React.ReactNode
 }) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-xs text-white/40 font-bold tracking-[0.15em] uppercase">{label}</label>
+      <label htmlFor={htmlFor} className="block text-xs text-white/60 font-bold tracking-[0.15em] uppercase">{label}</label>
       {children}
-      {error && <p className="text-red-400/80 text-xs">{error}</p>}
+      {error && <p role="alert" className="text-red-400/80 text-xs">{error}</p>}
     </div>
   )
 }
@@ -58,7 +60,7 @@ export default function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setSubmitError(false)
     try {
-      const res = await fetch('https://hook.eu2.make.com/66x69szyjxrbcw5ez4f26d2iknem51bw', {
+      const res = await fetch(import.meta.env.VITE_CONTACT_WEBHOOK_URL as string, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -102,7 +104,7 @@ export default function ContactForm() {
               נשמח לשמוע{' '}
               <span className="text-gradient">ממך</span>
             </h2>
-            <p className="text-white/40 leading-relaxed mb-10 font-light">
+            <p className="text-white/60 leading-relaxed mb-10 font-light">
               מלא את הטופס ונחזור אליך תוך 24 שעות עם הצעה מותאמת אישית.
             </p>
 
@@ -116,7 +118,7 @@ export default function ContactForm() {
                   <div className="w-8 h-8 border border-white/8 flex items-center justify-center text-sm shrink-0">
                     {item.icon}
                   </div>
-                  <span className="text-white/50 text-sm">{item.label}</span>
+                  <span className="text-white/65 text-sm">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -151,16 +153,18 @@ export default function ContactForm() {
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
                 <div className="grid sm:grid-cols-2 gap-5">
-                  <Field label="שם מלא *" error={errors.name?.message}>
+                  <Field label="שם מלא *" htmlFor="contact-name" error={errors.name?.message}>
                     <input
                       {...register('name')}
+                      id="contact-name"
                       placeholder="ישראל ישראלי"
                       className={inputClass}
                     />
                   </Field>
-                  <Field label="טלפון *" error={errors.phone?.message}>
+                  <Field label="טלפון *" htmlFor="contact-phone" error={errors.phone?.message}>
                     <input
                       {...register('phone')}
+                      id="contact-phone"
                       placeholder="050-0000000"
                       type="tel"
                       dir="ltr"
@@ -169,9 +173,10 @@ export default function ContactForm() {
                   </Field>
                 </div>
 
-                <Field label="אימייל *" error={errors.email?.message}>
+                <Field label="אימייל *" htmlFor="contact-email" error={errors.email?.message}>
                   <input
                     {...register('email')}
+                    id="contact-email"
                     placeholder="you@example.com"
                     type="email"
                     dir="ltr"
@@ -179,8 +184,8 @@ export default function ContactForm() {
                   />
                 </Field>
 
-                <Field label="שירות מבוקש *" error={errors.service?.message}>
-                  <select {...register('service')} className={inputClass}>
+                <Field label="שירות מבוקש *" htmlFor="contact-service" error={errors.service?.message}>
+                  <select {...register('service')} id="contact-service" className={inputClass}>
                     <option value="">-- בחר שירות --</option>
                     {services.map((s) => (
                       <option key={s} value={s} className="bg-[#05050a]">
@@ -190,9 +195,10 @@ export default function ContactForm() {
                   </select>
                 </Field>
 
-                <Field label="הודעה (אופציונלי)">
+                <Field label="הודעה (אופציונלי)" htmlFor="contact-message">
                   <textarea
                     {...register('message')}
+                    id="contact-message"
                     rows={4}
                     placeholder="ספר לנו על העסק שלך ומה אתה מחפש..."
                     className={`${inputClass} resize-none`}
