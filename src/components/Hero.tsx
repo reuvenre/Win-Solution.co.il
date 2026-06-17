@@ -51,7 +51,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full pb-20">
         <div className="max-w-3xl">
           {/* Label */}
           <motion.div
