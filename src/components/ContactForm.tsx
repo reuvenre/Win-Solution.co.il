@@ -60,7 +60,7 @@ export default function ContactForm() {
   const onSubmit = async (data: FormData) => {
     setSubmitError(false)
     try {
-      const res = await fetch(import.meta.env.VITE_CONTACT_WEBHOOK_URL as string, {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

@@ -1,21 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { GoogleGenAI } from '@google/genai'
 
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string
-
-const SYSTEM_PROMPT = `אתה עוזר וירטואלי של WIN SOLUTIONS — חברה ישראלית המתמחה באוטומציות No-Code, בניית אתרים, ופתרונות AI לעסקים קטנים ובינוניים.
-
-תפקידך:
-1. לענות על שאלות לגבי שירותי החברה
-2. להסביר את יתרונות האוטומציה ובינה מלאכותית
-3. לכוון משתמשים ליצירת קשר או קביעת פגישה
-
-כללים:
-- ענה תמיד בעברית
-- היה ידידותי, מקצועי וקצר
-- אם שאלה לא קשורה לשירותים, הסט בנימוס לנושא
-- עודד יצירת קשר ב: קביעת פגישה בסעיף "קביעת פגישה" או טופס יצירת קשר`
+const MAX_MESSAGE_LENGTH = 1000
+const RATE_LIMIT_MAX = 5      // max messages
+const RATE_LIMIT_WINDOW = 60000 // per 60 seconds
 
 interface Message {
   role: 'user' | 'assistant'
@@ -32,40 +20,54 @@ export default function AIChat() {
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
+  const [rateLimited, setRateLimited] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
+  const sentTimestamps = useRef<number[]>([])
 
   useEffect(() => {
     if (open) bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages, open])
 
+  const isRateLimited = (): boolean => {
+    const now = Date.now()
+    sentTimestamps.current = sentTimestamps.current.filter(t => now - t < RATE_LIMIT_WINDOW)
+    return sentTimestamps.current.length >= RATE_LIMIT_MAX
+  }
+
   const send = async () => {
     const text = input.trim()
     if (!text || loading) return
 
-    setMessages((prev) => [...prev, { role: 'user', text }])
+    if (text.length > MAX_MESSAGE_LENGTH) {
+      setMessages(prev => [...prev, { role: 'assistant', text: `ההודעה ארוכה מדי (מקסימום ${MAX_MESSAGE_LENGTH} תווים).` }])
+      return
+    }
+
+    if (isRateLimited()) {
+      setRateLimited(true)
+      setTimeout(() => setRateLimited(false), RATE_LIMIT_WINDOW)
+      return
+    }
+
+    sentTimestamps.current.push(Date.now())
+    setMessages(prev => [...prev, { role: 'user', text }])
     setInput('')
     setLoading(true)
 
     try {
-      if (!GEMINI_API_KEY) throw new Error('Missing API key')
-
-      const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY })
-      const history = messages.map((m) => ({
-        role: m.role === 'user' ? 'user' : 'model',
-        parts: [{ text: m.text }],
-      }))
-
-      const chat = ai.chats.create({
-        model: 'gemini-2.0-flash',
-        history,
-        config: { systemInstruction: SYSTEM_PROMPT },
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages, newMessage: text }),
       })
 
-      const response = await chat.sendMessage({ message: text })
-      const reply = response.text ?? 'מצטער, לא הצלחתי לעבד את הבקשה.'
-      setMessages((prev) => [...prev, { role: 'assistant', text: reply }])
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+      const data = await res.json() as { reply?: string }
+      const reply = data.reply ?? 'מצטער, לא הצלחתי לעבד את הבקשה.'
+      setMessages(prev => [...prev, { role: 'assistant', text: reply }])
     } catch {
-      setMessages((prev) => [
+      setMessages(prev => [
         ...prev,
         { role: 'assistant', text: 'מצטער, אירעה שגיאה. נסה שוב מאוחר יותר.' },
       ])
@@ -95,7 +97,7 @@ export default function AIChat() {
             style={{ maxHeight: '520px' }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-white/10 bg-gradient-to-r from-accent/10 to-blue-600/10">
+            <div className="flex items-center justify-between p-4 border-b border-white/10 bg-linear-to-r from-accent/10 to-blue-600/10">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-full bg-gradient-accent flex items-center justify-center text-sm">🤖</div>
                 <div>
@@ -107,8 +109,10 @@ export default function AIChat() {
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() => setOpen(false)}
                 className="text-white/50 hover:text-white text-lg transition-colors"
+                aria-label="סגור צ'אט"
               >
                 ✕
               </button>
@@ -151,19 +155,28 @@ export default function AIChat() {
               <div ref={bottomRef} />
             </div>
 
+            {/* Rate limit warning */}
+            {rateLimited && (
+              <div className="px-4 pb-2 text-xs text-yellow-400/80 text-center">
+                שלחת יותר מדי הודעות — נסה שוב עוד כמה שניות.
+              </div>
+            )}
+
             {/* Input */}
             <div className="p-3 border-t border-white/10 flex gap-2">
               <input
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => setInput(e.target.value.slice(0, MAX_MESSAGE_LENGTH))}
                 onKeyDown={handleKey}
                 placeholder="הקלד שאלה..."
                 className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-accent/50 transition-all"
               />
               <button
+                type="button"
                 onClick={send}
-                disabled={!input.trim() || loading}
+                disabled={!input.trim() || loading || rateLimited}
                 className="w-10 h-10 rounded-xl bg-gradient-accent flex items-center justify-center transition-all hover:glow-accent-sm disabled:opacity-40 shrink-0"
+                aria-label="שלח הודעה"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="rotate-180">
                   <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

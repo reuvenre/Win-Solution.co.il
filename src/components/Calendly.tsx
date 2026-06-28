@@ -8,6 +8,7 @@ export default function Calendly() {
     const script = document.createElement('script')
     script.src = 'https://assets.calendly.com/assets/external/widget.js'
     script.async = true
+    script.crossOrigin = 'anonymous'
     document.body.appendChild(script)
     return () => {
       document.body.removeChild(script)
