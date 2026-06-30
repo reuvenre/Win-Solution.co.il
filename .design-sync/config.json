@@ -1,0 +1,27 @@
+{
+  "pkg": "win-solutions-automations",
+  "globalName": "WinSolutions",
+  "projectId": "5720f9b7-f40d-4735-ac62-c6e91c82eff2",
+  "shape": "package",
+  "entry": ".design-sync/dist/index.mjs",
+  "srcDir": "src",
+  "cssEntry": "dist/assets/index-DYHjKf1m.css",
+  "componentSrcMap": {
+    "Hero": "src/components/Hero.tsx",
+    "Services": "src/components/Services.tsx",
+    "About": "src/components/About.tsx",
+    "Navbar": "src/components/Navbar.tsx",
+    "Footer": "src/components/Footer.tsx",
+    "ContactForm": "src/components/ContactForm.tsx",
+    "Calendly": "src/components/Calendly.tsx",
+    "WhatsApp": "src/components/WhatsApp.tsx",
+    "AIChat": "src/components/AIChat.tsx",
+    "AutomationBackground": "src/components/AutomationBackground.tsx"
+  },
+  "overrides": {
+    "Navbar": { "cardMode": "single", "primaryStory": "Default", "viewport": "1100x200" },
+    "AutomationBackground": { "cardMode": "single", "primaryStory": "Default", "viewport": "960x440" },
+    "AIChat": { "cardMode": "single", "primaryStory": "Default", "viewport": "400x340" },
+    "WhatsApp": { "cardMode": "single", "primaryStory": "Default", "viewport": "400x340" }
+  }
+}
