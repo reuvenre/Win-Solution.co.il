@@ -8,7 +8,9 @@ export default function Calendly() {
     const script = document.createElement('script')
     script.src = 'https://assets.calendly.com/assets/external/widget.js'
     script.async = true
-    script.crossOrigin = 'anonymous'
+    // NOTE: do NOT set script.crossOrigin — Calendly's CDN only allows
+    // Access-Control-Allow-Origin: https://calendly.com, so requesting the
+    // widget in CORS mode gets blocked and the inline iframe never renders.
     document.body.appendChild(script)
     return () => {
       document.body.removeChild(script)
