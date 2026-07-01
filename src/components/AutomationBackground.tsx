@@ -32,9 +32,11 @@ export default function AutomationBackground() {
       vy: (Math.random() - 0.5) * SPEED,
     }))
 
-    let animId: number
+    let animId = 0
 
-    const draw = () => {
+    // Render a single frame (advance + draw). Kept separate from the loop so
+    // it can be used for a static frame under reduced-motion.
+    const renderFrame = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       for (const p of particles) {
@@ -67,14 +69,36 @@ export default function AutomationBackground() {
           }
         }
       }
-
-      animId = requestAnimationFrame(draw)
     }
 
-    draw()
+    const loop = () => {
+      renderFrame()
+      animId = requestAnimationFrame(loop)
+    }
+
+    // Respect prefers-reduced-motion: draw one static frame, no RAF loop.
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      renderFrame()
+    } else {
+      loop()
+    }
+
+    // Pause the loop while the tab is hidden to save CPU/battery.
+    const onVisibility = () => {
+      if (reduceMotion) return
+      if (document.hidden) {
+        cancelAnimationFrame(animId)
+        animId = 0
+      } else if (!animId) {
+        loop()
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibility)
 
     return () => {
       window.removeEventListener('resize', resize)
+      document.removeEventListener('visibilitychange', onVisibility)
       cancelAnimationFrame(animId)
     }
   }, [])

@@ -43,7 +43,7 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative text-sm text-white/65 hover:text-white transition-colors duration-200 group py-1"
+                className="relative text-sm text-white/85 hover:text-white transition-colors duration-200 group py-1"
               >
                 {l.label}
                 <span className="absolute bottom-0 right-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300" />
@@ -97,7 +97,7 @@ export default function Navbar() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="block text-white/60 hover:text-accent py-3 text-sm border-b border-white/5 last:border-0 transition-colors"
+                    className="block text-white/80 hover:text-accent py-3 text-sm border-b border-white/5 last:border-0 transition-colors"
                     onClick={() => setMenuOpen(false)}
                   >
                     {l.label}

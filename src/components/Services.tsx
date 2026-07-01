@@ -68,11 +68,11 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       <div className={`h-px w-8 group-hover:w-14 transition-all duration-300 mb-5 ${service.accentClass}`} />
 
       <h3 className="text-base font-bold text-white mb-3 tracking-tight">{service.title}</h3>
-      <p className="text-white/65 text-sm leading-relaxed mb-6">{service.description}</p>
+      <p className="text-white/85 text-sm leading-relaxed mb-6">{service.description}</p>
 
       <ul className="space-y-2.5">
         {service.features.map((f) => (
-          <li key={f} className="flex items-center gap-2.5 text-xs text-white/65">
+          <li key={f} className="flex items-center gap-2.5 text-xs text-white/85">
             <span className={`w-1 h-1 rounded-full shrink-0 ${service.accentClass}`} />
             {f}
           </li>
@@ -104,7 +104,7 @@ export default function Services() {
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-tight">
             הכל תחת קורת גג אחת
           </h2>
-          <p className="text-white/60 text-base mt-4 max-w-lg font-light">
+          <p className="text-white/80 text-base mt-4 max-w-lg font-light">
             מאוטומציות פשוטות ועד פתרונות AI מורכבים — אנחנו מתאימים את הפתרון לצרכים הספציפיים של העסק שלך.
           </p>
         </motion.div>
@@ -129,7 +129,7 @@ export default function Services() {
               <div className="h-px w-6 bg-accent" />
               <span className="text-accent text-xs font-bold tracking-[0.25em] uppercase">ייעוץ ראשוני חינם</span>
             </div>
-            <p className="text-white/65 text-sm max-w-lg">
+            <p className="text-white/85 text-sm max-w-lg">
               לא בטוח מאיפה להתחיל? נשמח להקדיש לך 30 דקות ייעוץ חינם — נבין את הצרכים שלך ונמליץ על הפתרון המדויק.
             </p>
           </div>

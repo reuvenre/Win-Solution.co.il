@@ -111,7 +111,7 @@ export default function AIChat() {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="text-white/50 hover:text-white text-lg transition-colors"
+                className="text-white/75 hover:text-white text-lg transition-colors"
                 aria-label="סגור צ'אט"
               >
                 ✕
@@ -169,7 +169,7 @@ export default function AIChat() {
                 onChange={(e) => setInput(e.target.value.slice(0, MAX_MESSAGE_LENGTH))}
                 onKeyDown={handleKey}
                 placeholder="הקלד שאלה..."
-                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-accent/50 transition-all"
+                className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white placeholder:text-white/60 focus:outline-none focus:border-accent/50 transition-all"
               />
               <button
                 type="button"

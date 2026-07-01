@@ -40,14 +40,14 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-1.5">
               <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-              <span className="text-white/30 text-xs">הבית שלכם למערכות מתקדמות</span>
+              <span className="text-white/60 text-xs">הבית שלכם למערכות מתקדמות</span>
             </div>
           </div>
 
           {/* Links */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-white/60 text-xs font-bold tracking-[0.2em] uppercase mb-5">{title}</h4>
+              <h4 className="text-white/80 text-xs font-bold tracking-[0.2em] uppercase mb-5">{title}</h4>
               <ul className="space-y-3">
                 {links.map((l) => (
                   <li key={l.label}>
@@ -68,11 +68,11 @@ export default function Footer() {
         <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
         {/* Bottom bar */}
-        <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-white/25 text-xs">
+        <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-white/55 text-xs">
           <p>© {year} WIN SOLUTIONS בע״מ. כל הזכויות שמורות.</p>
           <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white/50 transition-colors">מדיניות פרטיות</a>
-            <a href="#" className="hover:text-white/50 transition-colors">תנאי שימוש</a>
+            <a href="#" className="hover:text-white/75 transition-colors">מדיניות פרטיות</a>
+            <a href="#" className="hover:text-white/75 transition-colors">תנאי שימוש</a>
             <span className="text-white/15">|</span>
             <span>עוצב ופותח בישראל 🇮🇱</span>
           </div>

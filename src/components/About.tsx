@@ -66,11 +66,11 @@ export default function About() {
               טכנולוגיה שעובדת{' '}
               <span className="text-gradient">בשבילך</span>
             </h2>
-            <p className="text-white/65 leading-relaxed mb-5 font-light">
+            <p className="text-white/85 leading-relaxed mb-5 font-light">
               WIN SOLUTIONS נוסדה מתוך אמונה עמוקה שעסקים קטנים ובינוניים מגיעים לאותם
               כלים טכנולוגיים שעומדים לרשות תאגידי הענק — ובמחיר שמתאים להם.
             </p>
-            <p className="text-white/65 leading-relaxed mb-10 font-light">
+            <p className="text-white/85 leading-relaxed mb-10 font-light">
               הצוות שלנו מתמחה בהנגשת פתרונות אוטומציה, בינה מלאכותית ופיתוח
               ווב, תוך מיקוד בתוצאות מדידות וחסכון אמיתי בזמן ובכסף.
             </p>
@@ -112,7 +112,7 @@ export default function About() {
                 {v.num}
               </div>
               <h4 className="text-white font-bold mb-3 tracking-tight">{v.title}</h4>
-              <p className="text-white/60 text-sm leading-relaxed font-light">{v.desc}</p>
+              <p className="text-white/80 text-sm leading-relaxed font-light">{v.desc}</p>
             </motion.div>
           ))}
         </div>

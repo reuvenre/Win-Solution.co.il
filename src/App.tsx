@@ -1,13 +1,17 @@
+import { lazy, Suspense } from 'react'
 import './App.css'
 import AutomationBackground from './components/AutomationBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import About from './components/About'
-import Calendly from './components/Calendly'
-import ContactForm from './components/ContactForm'
 import Footer from './components/Footer'
 import WhatsApp from './components/WhatsApp'
+
+// Below-the-fold components are code-split so their deps (the Calendly embed,
+// and react-hook-form + zod for the form) don't weigh down the initial bundle.
+const Calendly = lazy(() => import('./components/Calendly'))
+const ContactForm = lazy(() => import('./components/ContactForm'))
 
 function App() {
   return (
@@ -24,8 +28,10 @@ function App() {
         <Hero />
         <Services />
         <About />
-        <Calendly />
-        <ContactForm />
+        <Suspense fallback={null}>
+          <Calendly />
+          <ContactForm />
+        </Suspense>
       </main>
       <Footer />
       <WhatsApp />

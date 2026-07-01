@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&display=swap');
+/* Heebo is loaded via <link rel="preconnect"> + stylesheet in index.html so it
+   doesn't render-block behind this CSS. */
 @import "tailwindcss";
 
 @theme {
@@ -13,6 +14,9 @@
   html {
     direction: rtl;
     scroll-behavior: smooth;
+    /* Lift the whole type scale a notch for readability (rem-based utilities
+       scale with this). */
+    font-size: 106.25%; /* 17px base */
   }
 
   body {

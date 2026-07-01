@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 const schema = z.object({
   name: z.string().min(2, 'שם חייב להכיל לפחות 2 תווים'),
+  business: z.string().max(100, 'שם עסק ארוך מדי').optional(),
   phone: z.string().regex(/^0\d{8,9}$/, 'מספר טלפון לא תקין'),
   email: z.email('כתובת אימייל לא תקינה'),
   service: z.string().min(1, 'אנא בחר שירות'),
@@ -37,7 +38,7 @@ function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <label htmlFor={htmlFor} className="block text-xs text-white/60 font-bold tracking-[0.15em] uppercase">{label}</label>
+      <label htmlFor={htmlFor} className="block text-xs text-white/80 font-bold tracking-[0.15em] uppercase">{label}</label>
       {children}
       {error && <p role="alert" className="text-red-400/80 text-xs">{error}</p>}
     </div>
@@ -104,7 +105,7 @@ export default function ContactForm() {
               נשמח לשמוע{' '}
               <span className="text-gradient">ממך</span>
             </h2>
-            <p className="text-white/60 leading-relaxed mb-10 font-light">
+            <p className="text-white/80 leading-relaxed mb-10 font-light">
               מלא את הטופס ונחזור אליך תוך 24 שעות עם הצעה מותאמת אישית.
             </p>
 
@@ -118,7 +119,7 @@ export default function ContactForm() {
                   <div className="w-8 h-8 border border-white/8 flex items-center justify-center text-sm shrink-0">
                     {item.icon}
                   </div>
-                  <span className="text-white/65 text-sm">{item.label}</span>
+                  <span className="text-white/85 text-sm">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -141,7 +142,7 @@ export default function ContactForm() {
                   <span className="text-accent text-2xl">✓</span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2 tracking-tight">ההודעה נשלחה בהצלחה</h3>
-                <p className="text-white/40 text-sm mb-6">ניצור איתך קשר בהקדם.</p>
+                <p className="text-white/65 text-sm mb-6">ניצור איתך קשר בהקדם.</p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
@@ -172,6 +173,15 @@ export default function ContactForm() {
                     />
                   </Field>
                 </div>
+
+                <Field label="שם העסק" htmlFor="contact-business" error={errors.business?.message}>
+                  <input
+                    {...register('business')}
+                    id="contact-business"
+                    placeholder="שם החברה / העסק"
+                    className={inputClass}
+                  />
+                </Field>
 
                 <Field label="אימייל *" htmlFor="contact-email" error={errors.email?.message}>
                   <input

@@ -78,7 +78,7 @@ export default function Hero() {
             <br />
             <span className="text-gradient">מכפילים הכנסות.</span>
             <br />
-            <span className="text-white/60">מתקדמים עם AI.</span>
+            <span className="text-white/80">מתקדמים עם AI.</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -87,7 +87,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="text-base md:text-lg text-white/65 max-w-lg leading-relaxed mb-10 font-light"
+            className="text-base md:text-lg text-white/85 max-w-lg leading-relaxed mb-10 font-light"
           >
             אנחנו מנגישים לעסקים קטנים ובינוניים את הטכנולוגיות המתקדמות ביותר —
             אוטומציות, בינה מלאכותית ואתרים חכמים — כדי שתוכל להתמקד במה שחשוב.

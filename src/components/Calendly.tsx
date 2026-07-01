@@ -25,7 +25,7 @@ export default function Calendly() {
           <h2 className="text-4xl md:text-5xl font-black text-white mt-3 mb-4">
             קבע פגישת ייעוץ חינם
           </h2>
-          <p className="text-white/60 max-w-xl mx-auto">
+          <p className="text-white/80 max-w-xl mx-auto">
             30 דקות שיכולות לשנות את העסק שלך. בחר זמן שנוח לך ונדבר על
             האפשרויות שמתאימות לך.
           </p>
