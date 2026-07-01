@@ -1,3 +1,5 @@
+import { rateLimit, clientIp } from './_rateLimit'
+
 const VALID_SERVICES = [
   'בניית אתרים',
   'אוטומציות No-Code',
@@ -13,15 +15,22 @@ export default async function handler(req: any, res: any) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  if (!rateLimit(`contact:${clientIp(req)}`, 5, 60_000)) {
+    return res.status(429).json({ error: 'Too many requests' })
+  }
+
   const webhookUrl = process.env.MAKE_WEBHOOK_URL
   if (!webhookUrl) {
     return res.status(500).json({ error: 'Server configuration error' })
   }
 
-  const { name, phone, email, service, message } = req.body ?? {}
+  const { name, business, phone, email, service, message } = req.body ?? {}
 
   if (!name || typeof name !== 'string' || name.trim().length < 2 || name.length > 100) {
     return res.status(400).json({ error: 'Invalid name' })
+  }
+  if (business && (typeof business !== 'string' || business.length > 100)) {
+    return res.status(400).json({ error: 'Invalid business' })
   }
   if (!phone || typeof phone !== 'string' || !/^0\d{8,9}$/.test(phone)) {
     return res.status(400).json({ error: 'Invalid phone' })
@@ -42,6 +51,7 @@ export default async function handler(req: any, res: any) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name.trim(),
+        business: business?.trim() ?? '',
         phone,
         email: email.trim().toLowerCase(),
         service,

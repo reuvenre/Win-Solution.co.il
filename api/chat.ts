@@ -1,4 +1,5 @@
 import { GoogleGenAI } from '@google/genai'
+import { rateLimit, clientIp } from './_rateLimit'
 
 const SYSTEM_PROMPT = `אתה עוזר וירטואלי של WIN SOLUTIONS — חברה ישראלית המתמחה באוטומציות No-Code, בניית אתרים, ופתרונות AI לעסקים קטנים ובינוניים.
 
@@ -19,6 +20,10 @@ const MAX_HISTORY_ITEMS = 20
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
+  }
+
+  if (!rateLimit(`chat:${clientIp(req)}`, 15, 60_000)) {
+    return res.status(429).json({ error: 'Too many requests' })
   }
 
   const { messages, newMessage } = req.body ?? {}
