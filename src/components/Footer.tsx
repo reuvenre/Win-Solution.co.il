@@ -71,8 +71,8 @@ export default function Footer() {
         <div className="py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-white/55 text-xs">
           <p>© {year} WIN SOLUTIONS בע״מ. כל הזכויות שמורות.</p>
           <div className="flex items-center gap-5">
-            <a href="#" className="hover:text-white/75 transition-colors">מדיניות פרטיות</a>
-            <a href="#" className="hover:text-white/75 transition-colors">תנאי שימוש</a>
+            <a href="/privacy.html" className="hover:text-white/75 transition-colors">מדיניות פרטיות</a>
+            <a href="/terms.html" className="hover:text-white/75 transition-colors">תנאי שימוש</a>
             <span className="text-white/15">|</span>
             <span>עוצב ופותח בישראל 🇮🇱</span>
           </div>
