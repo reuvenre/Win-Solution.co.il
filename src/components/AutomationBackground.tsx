@@ -18,12 +18,10 @@ export default function AutomationBackground() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
+    // Size the canvas before spawning particles so they spread over the full
+    // viewport, not the default 300x150 canvas.
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
 
     const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: Math.random() * canvas.width,
@@ -31,6 +29,18 @@ export default function AutomationBackground() {
       vx: (Math.random() - 0.5) * SPEED,
       vy: (Math.random() - 0.5) * SPEED,
     }))
+
+    const resize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      // Keep particles inside the new bounds — otherwise after a shrink they
+      // drift outside the canvas and the background looks sparse.
+      for (const p of particles) {
+        p.x = ((p.x % canvas.width) + canvas.width) % canvas.width
+        p.y = ((p.y % canvas.height) + canvas.height) % canvas.height
+      }
+    }
+    window.addEventListener('resize', resize)
 
     let animId = 0
 

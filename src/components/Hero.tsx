@@ -35,8 +35,10 @@ export default function Hero() {
 
       {/* Logo — left side */}
       <motion.img
-        src="/logo.png"
+        src="/logo.webp"
         alt="WIN Solutions"
+        width={340}
+        height={340}
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}

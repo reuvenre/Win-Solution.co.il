@@ -32,7 +32,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <img src="/logo.png" alt="WIN Solutions" className="h-9 w-9 rounded-full object-cover" />
+              <img src="/logo.webp" alt="WIN Solutions" width={36} height={36} loading="lazy" className="h-9 w-9 rounded-full object-cover" />
               <span className="text-white font-black text-sm tracking-widest uppercase">WIN SOLUTIONS</span>
             </div>
             <p className="text-white/55 text-sm leading-relaxed font-light mb-6">

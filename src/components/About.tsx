@@ -49,8 +49,11 @@ export default function About() {
             className="flex justify-center"
           >
             <img
-              src="/profile.jpg"
+              src="/profile.webp"
               alt="ראובן ראובן — WIN SOLUTIONS"
+              width={224}
+              height={224}
+              loading="lazy"
               className="w-56 h-56 rounded-full object-cover object-top"
               style={{ boxShadow: '0 0 0 2px rgba(0,212,255,0.4), 0 0 40px rgba(0,212,255,0.15)' }}
             />

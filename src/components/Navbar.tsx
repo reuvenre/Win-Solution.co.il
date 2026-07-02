@@ -31,7 +31,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a href="#hero" className="flex items-center gap-2.5 group">
-          <img src="/logo.png" alt="WIN Solutions" className="h-9 w-9 rounded-full object-cover" />
+          <img src="/logo.webp" alt="WIN Solutions" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
           <span className="hidden sm:block text-white font-black text-sm tracking-widest uppercase opacity-80 group-hover:opacity-100 transition-opacity">
             WIN SOLUTIONS
           </span>

@@ -24,7 +24,13 @@ export default async function handler(req: any, res: any) {
     return res.status(500).json({ error: 'Server configuration error' })
   }
 
-  const { name, business, phone, email, service, message } = req.body ?? {}
+  const { name, business, phone, email, service, message, website } = req.body ?? {}
+
+  // Honeypot: a hidden field humans never fill. If present, pretend success
+  // so bots don't learn they were filtered — and don't hit the webhook.
+  if (website) {
+    return res.status(200).json({ ok: true })
+  }
 
   if (!name || typeof name !== 'string' || name.trim().length < 2 || name.length > 100) {
     return res.status(400).json({ error: 'Invalid name' })

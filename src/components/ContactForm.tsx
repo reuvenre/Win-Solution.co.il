@@ -11,6 +11,8 @@ const schema = z.object({
   email: z.email('כתובת אימייל לא תקינה'),
   service: z.string().min(1, 'אנא בחר שירות'),
   message: z.string().optional(),
+  // Honeypot — hidden from humans; bots that fill it are silently dropped.
+  website: z.string().optional(),
 })
 
 type FormData = z.infer<typeof schema>
@@ -153,6 +155,16 @@ export default function ContactForm() {
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
+                {/* Honeypot — invisible to humans (aria-hidden, off-screen, no tab stop) */}
+                <div aria-hidden="true" className="absolute w-px h-px overflow-hidden -m-px" style={{ clip: 'rect(0 0 0 0)' }}>
+                  <label htmlFor="contact-website">אתר אינטרנט</label>
+                  <input
+                    {...register('website')}
+                    id="contact-website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <Field label="שם מלא *" htmlFor="contact-name" error={errors.name?.message}>
                     <input
