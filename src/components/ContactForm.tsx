@@ -105,11 +105,11 @@ export default function ContactForm() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-tight mb-6">
-              נשמח לשמוע{' '}
+              אשמח לשמוע{' '}
               <span className="text-gradient">ממך</span>
             </h2>
             <p className="text-white/80 leading-relaxed mb-10 font-light">
-              מלא את הטופס ונחזור אליך תוך 24 שעות עם הצעה מותאמת אישית.
+              מלא את הטופס ואחזור אליך תוך 24 שעות עם הצעה מותאמת אישית.
             </p>
 
             <div className="space-y-5">
@@ -145,7 +145,7 @@ export default function ContactForm() {
                   <span className="text-accent text-2xl">✓</span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2 tracking-tight">ההודעה נשלחה בהצלחה</h3>
-                <p className="text-white/65 text-sm mb-6">ניצור איתך קשר בהקדם.</p>
+                <p className="text-white/65 text-sm mb-6">אחזור אליך בהקדם.</p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}

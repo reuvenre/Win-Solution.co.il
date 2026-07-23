@@ -105,7 +105,7 @@ export default function Services() {
             הכל תחת קורת גג אחת
           </h2>
           <p className="text-white/80 text-base mt-4 max-w-lg font-light">
-            מאוטומציות פשוטות ועד פתרונות AI מורכבים — אנחנו מתאימים את הפתרון לצרכים הספציפיים של העסק שלך.
+            מאוטומציות פשוטות ועד פתרונות AI מורכבים — אני מתאים את הפתרון לצרכים הספציפיים של העסק שלך.
           </p>
         </motion.div>
 
@@ -130,7 +130,7 @@ export default function Services() {
               <span className="text-accent text-xs font-bold tracking-[0.25em] uppercase">ייעוץ ראשוני חינם</span>
             </div>
             <p className="text-white/85 text-sm max-w-lg">
-              לא בטוח מאיפה להתחיל? נשמח להקדיש לך 30 דקות ייעוץ חינם — נבין את הצרכים שלך ונמליץ על הפתרון המדויק.
+              לא בטוח מאיפה להתחיל? אשמח להקדיש לך 30 דקות ייעוץ חינם — נבין יחד את הצרכים שלך ואמליץ על הפתרון המדויק.
             </p>
           </div>
           <a
