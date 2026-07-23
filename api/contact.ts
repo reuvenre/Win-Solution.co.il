@@ -7,6 +7,7 @@ const VALID_SERVICES = [
   'Airtable CRM',
   'AI Chat Agent',
   'חבילת הכל-באחד',
+  'מערכת לידים בהתאמה אישית',
   'ייעוץ ראשוני',
 ]
 

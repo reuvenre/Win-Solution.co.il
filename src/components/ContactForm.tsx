@@ -24,6 +24,7 @@ const services = [
   'Airtable CRM',
   'AI Chat Agent',
   'חבילת הכל-באחד',
+  'מערכת לידים בהתאמה אישית',
   'ייעוץ ראשוני',
 ]
 
@@ -92,7 +93,7 @@ export default function ContactForm() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-3 mb-16"
         >
-          <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase">03 — צור קשר</span>
+          <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase">04 — צור קשר</span>
           <div className="h-px flex-1 bg-white/8 max-w-xs" />
         </motion.div>
 

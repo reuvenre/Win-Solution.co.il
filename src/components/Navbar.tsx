@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const links = [
   { label: 'בית', href: '#hero' },
   { label: 'שירותים', href: '#services' },
+  { label: 'פרויקטים', href: '#projects' },
   { label: 'אודות', href: '#about' },
   { label: 'קביעת פגישה', href: '#scheduling' },
   { label: 'צור קשר', href: '#contact' },
