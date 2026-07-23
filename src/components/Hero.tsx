@@ -91,7 +91,7 @@ export default function Hero() {
             variants={fadeUp}
             className="text-base md:text-lg text-white/85 max-w-lg leading-relaxed mb-10 font-light"
           >
-            אנחנו מנגישים לעסקים קטנים ובינוניים את הטכנולוגיות המתקדמות ביותר —
+            אני מנגיש לעסקים קטנים ובינוניים את הטכנולוגיות המתקדמות ביותר —
             אוטומציות, בינה מלאכותית ואתרים חכמים — כדי שתוכל להתמקד במה שחשוב.
           </motion.p>
 
@@ -127,7 +127,7 @@ export default function Hero() {
             className="mt-16 pt-8 border-t border-white/8 grid grid-cols-3 gap-8 max-w-xs"
           >
             {[
-              { value: '50+', label: 'לקוחות מרוצים' },
+              { value: '50+', label: 'פרויקטים שהושלמו' },
               { value: '200+', label: 'אוטומציות' },
               { value: '95%', label: 'חיסכון בזמן' },
             ].map((s) => (
