@@ -8,6 +8,7 @@ const footerLinks = {
     { label: 'חבילת הכל-באחד', href: '#services' },
   ],
   חברה: [
+    { label: 'הפרויקטים שלנו', href: '#projects' },
     { label: 'אודותינו', href: '#about' },
     { label: 'קביעת פגישה', href: '#scheduling' },
     { label: 'צור קשר', href: '#contact' },

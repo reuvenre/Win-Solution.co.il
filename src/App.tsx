@@ -4,6 +4,7 @@ import AutomationBackground from './components/AutomationBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
+import Projects from './components/Projects'
 import About from './components/About'
 import Footer from './components/Footer'
 import WhatsApp from './components/WhatsApp'
@@ -27,6 +28,7 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <Projects />
         <About />
         <Suspense fallback={null}>
           <Calendly />

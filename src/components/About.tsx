@@ -35,7 +35,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-3 mb-16"
         >
-          <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase">02 — אודותינו</span>
+          <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase">03 — אודותינו</span>
           <div className="h-px flex-1 bg-white/8 max-w-xs" />
         </motion.div>
 
