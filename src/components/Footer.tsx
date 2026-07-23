@@ -9,7 +9,7 @@ const footerLinks = {
   ],
   חברה: [
     { label: 'הפרויקטים שלנו', href: '#projects' },
-    { label: 'אודותינו', href: '#about' },
+    { label: 'עליי', href: '#about' },
     { label: 'קביעת פגישה', href: '#scheduling' },
     { label: 'צור קשר', href: '#contact' },
   ],
