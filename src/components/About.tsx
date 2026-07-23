@@ -4,18 +4,18 @@ import { useRef } from 'react'
 const values = [
   {
     num: '01',
-    title: 'ממוקדי תוצאות',
-    desc: 'כל פתרון נמדד לפי ההשפעה האמיתית על העסק שלך — לא תיאוריה, תוצאות.',
+    title: 'ממוקד תוצאות',
+    desc: 'כל מערכת שאני בונה נמדדת לפי ההשפעה האמיתית על העסק שלך — לא תיאוריה, תוצאות שרואים.',
   },
   {
     num: '02',
-    title: 'מהירות יישום',
-    desc: 'מאפס לפתרון עובד תוך ימים ספורים, לא חודשים. אנחנו עובדים מהר ומדויק.',
+    title: 'יחס אישי ומלא',
+    desc: 'אתה לא מספר. אני מכיר כל פרויקט לעומק, זמין לשאלות, ומלווה אותך גם אחרי שהמערכת עלתה לאוויר.',
   },
   {
     num: '03',
-    title: 'שותפות לטווח ארוך',
-    desc: 'אנחנו לא רק ספקים — אנחנו שותפים אסטרטגיים שמתפתחים יחד עם העסק שלך.',
+    title: 'מהירות ואמינות',
+    desc: 'מאפס לפתרון עובד תוך ימים ספורים, לא חודשים. מה שאני מבטיח — אני מבצע.',
   },
 ]
 
@@ -35,7 +35,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="flex items-center gap-3 mb-16"
         >
-          <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase">03 — אודותינו</span>
+          <span className="text-accent text-xs font-bold tracking-[0.3em] uppercase">03 — עליי</span>
           <div className="h-px flex-1 bg-white/8 max-w-xs" />
         </motion.div>
 
@@ -50,7 +50,7 @@ export default function About() {
           >
             <img
               src="/profile.webp"
-              alt="ראובן ראובן — WIN SOLUTIONS"
+              alt="המייסד של WIN SOLUTIONS"
               width={224}
               height={224}
               loading="lazy"
@@ -66,31 +66,33 @@ export default function About() {
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-tight mb-6">
-              טכנולוגיה שעובדת{' '}
-              <span className="text-gradient">בשבילך</span>
+              מאחורי כל פרויקט —{' '}
+              <span className="text-gradient">אני</span>
             </h2>
             <p className="text-white/85 leading-relaxed mb-5 font-light">
-              WIN SOLUTIONS נוסדה מתוך אמונה עמוקה שעסקים קטנים ובינוניים מגיעים לאותם
-              כלים טכנולוגיים שעומדים לרשות תאגידי הענק — ובמחיר שמתאים להם.
+              אין כאן צוות גדול ואין מוקד שמעביר אותך מנציג לנציג. מהשיחה הראשונה
+              ועד ההטמעה בשטח — אתה עובד ישירות מולי, ומקבל מענה ממי שבונה את
+              המערכת במו ידיו.
             </p>
             <p className="text-white/85 leading-relaxed mb-10 font-light">
-              הצוות שלנו מתמחה בהנגשת פתרונות אוטומציה, בינה מלאכותית ופיתוח
-              ווב, תוך מיקוד בתוצאות מדידות וחסכון אמיתי בזמן ובכסף.
+              לאורך השנים בניתי עשרות מערכות אוטומציה, לידים ו-AI לעסקים קטנים
+              ובינוניים. את כל הניסיון הזה אני מביא לכל פרויקט — כדי להתאים לך
+              בדיוק את מה שהעסק צריך, בלי חבילות מדף ובלי בירוקרטיה.
             </p>
 
             <a
               href="#contact"
               className="inline-flex items-center gap-2 bg-accent text-black font-black text-xs px-7 py-3.5 tracking-wider uppercase transition-all duration-200 hover:bg-white"
             >
-              בואו נדבר
+              דברו איתי ישירות
               <span>←</span>
             </a>
 
             <div className="mt-12 pt-8 border-t border-white/8 grid grid-cols-3 gap-6">
               {[
                 { n: '3+', label: 'שנות ניסיון' },
-                { n: '50+', label: 'לקוחות פעילים' },
-                { n: '100%', label: 'שביעות רצון' },
+                { n: '50+', label: 'פרויקטים שהושלמו' },
+                { n: '1:1', label: 'יחס אישי לכל לקוח' },
               ].map((s) => (
                 <div key={s.label}>
                   <div className="text-2xl font-black text-gradient tracking-tighter">{s.n}</div>
