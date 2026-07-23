@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://win-solutions.co.il/sitemap.xml
+Sitemap: https://www.win-solutions.co.il/sitemap.xml
