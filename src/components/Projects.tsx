@@ -10,6 +10,7 @@ const projects = [
       'פלטפורמה לבניית אתרים ודפי נחיתה ממוקדי המרה — עיצוב מודרני, מהירות טעינה גבוהה וחיבור ישיר למערכות הלידים של העסק.',
     results: ['דפי נחיתה שממירים מבקרים ללידים', 'SEO מובנה מהיום הראשון', 'חיבור אוטומטי ל-CRM ולוואטסאפ'],
     tags: ['React', 'AI', 'SEO'],
+    link: 'https://nexlify.win-solutions.co.il/',
     accentClass: 'svc-accent-cyan',
     hoverBorder: 'hover:border-cyan-400/30',
   },
@@ -20,6 +21,7 @@ const projects = [
       'מערכת שקולטת לידים מקמפיינים, טפסים ורשתות חברתיות — מסננת, מתעדפת ומנתבת אותם אוטומטית לנציג הנכון תוך שניות.',
     results: ['מענה ראשוני ללידים תוך שניות', 'ניתוב חכם לפי מקור ותחום', 'דוחות המרה בזמן אמת'],
     tags: ['Make', 'WhatsApp API', 'Airtable'],
+    link: 'https://clicklead.win-solutions.co.il/',
     accentClass: 'svc-accent-purple',
     hoverBorder: 'hover:border-purple-400/30',
   },
@@ -30,6 +32,7 @@ const projects = [
       'מערכת CRM ייעודית לשוק הנדל״ן — ניהול לידים, התאמת נכסים ללקוחות, מעקב אחר עסקאות ותזכורות אוטומטיות לכל שלב במשפך.',
     results: ['התאמה חכמה בין לקוחות לנכסים', 'פולו-אפ אוטומטי שלא מפספס אף ליד', 'תמונת מצב מלאה של כל העסקאות'],
     tags: ['Airtable', 'Make', 'אוטומציה'],
+    link: 'https://wa-lead-crm.vercel.app/',
     accentClass: 'svc-accent-emerald',
     hoverBorder: 'hover:border-emerald-400/30',
   },
@@ -40,8 +43,20 @@ const projects = [
       'מערכת לניהול משרד עורכי דין — קליטת פניות מדף הנחיתה ישירות למשרד, תיאום פגישות אוטומטי ומעקב מסודר אחר כל תיק ולקוח.',
     results: ['כל פנייה מגיעה למשרד בזמן אמת', 'תיאום פגישות ללא טלפונים מיותרים', 'ניהול תיקים ולקוחות במקום אחד'],
     tags: ['React', 'Make', 'CRM'],
+    link: 'https://law-office-system-drab.vercel.app/',
     accentClass: 'svc-accent-yellow',
     hoverBorder: 'hover:border-yellow-400/30',
+  },
+  {
+    name: 'LEADGRAM',
+    category: 'לידים מרשתות חברתיות',
+    description:
+      'מערכת שהופכת עוקבים ללקוחות — קולטת פניות מהרשתות החברתיות, מגיבה אוטומטית ומעבירה כל ליד חם ישירות למשפך המכירות.',
+    results: ['תגובה אוטומטית לכל פנייה', 'סינון לידים חמים מקרים', 'סנכרון מלא עם ה-CRM'],
+    tags: ['אוטומציה', 'AI', 'CRM'],
+    link: 'https://leadgram.win-solutions.co.il/',
+    accentClass: 'svc-accent-rose',
+    hoverBorder: 'hover:border-rose-400/30',
   },
 ]
 
@@ -77,7 +92,7 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         ))}
       </ul>
 
-      <div className="mt-auto flex items-center justify-between gap-4 pt-5 border-t border-white/6">
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-white/6">
         <div className="flex flex-wrap gap-2">
           {project.tags.map((t) => (
             <span
@@ -88,12 +103,22 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
             </span>
           ))}
         </div>
-        <a
-          href="#contact"
-          className="shrink-0 text-accent text-xs font-bold tracking-widest uppercase hover:text-white transition-colors whitespace-nowrap"
-        >
-          רוצה כזאת? ←
-        </a>
+        <div className="flex items-center gap-5">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 text-white/70 text-xs font-bold tracking-widest uppercase hover:text-accent transition-colors whitespace-nowrap"
+          >
+            צפה במערכת ↗
+          </a>
+          <a
+            href="#contact"
+            className="shrink-0 text-accent text-xs font-bold tracking-widest uppercase hover:text-white transition-colors whitespace-nowrap"
+          >
+            רוצה כזאת? ←
+          </a>
+        </div>
       </div>
     </motion.div>
   )
@@ -127,7 +152,12 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 gap-px bg-white/[0.05]">
           {projects.map((p, i) => (
-            <div key={p.name} className="bg-[#05050a]">
+            <div
+              key={p.name}
+              className={`bg-[#05050a] ${
+                projects.length % 2 === 1 && i === projects.length - 1 ? 'md:col-span-2' : ''
+              }`}
+            >
               <ProjectCard project={p} index={i} />
             </div>
           ))}
