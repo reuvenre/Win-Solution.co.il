@@ -47,17 +47,6 @@ const projects = [
     accentClass: 'svc-accent-yellow',
     hoverBorder: 'hover:border-yellow-400/30',
   },
-  {
-    name: 'LEADGRAM',
-    category: 'לידים מרשתות חברתיות',
-    description:
-      'מערכת שהופכת עוקבים ללקוחות — קולטת פניות מהרשתות החברתיות, מגיבה אוטומטית ומעבירה כל ליד חם ישירות למשפך המכירות.',
-    results: ['תגובה אוטומטית לכל פנייה', 'סינון לידים חמים מקרים', 'סנכרון מלא עם ה-CRM'],
-    tags: ['אוטומציה', 'AI', 'CRM'],
-    link: 'https://leadgram.win-solutions.co.il/',
-    accentClass: 'svc-accent-rose',
-    hoverBorder: 'hover:border-rose-400/30',
-  },
 ]
 
 function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
