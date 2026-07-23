@@ -10,6 +10,19 @@ const links = [
   { label: 'צור קשר', href: '#contact' },
 ]
 
+// Height of the fixed navbar (h-16 = 64px) — offset the scroll target so the
+// section heading isn't hidden underneath it.
+const NAV_OFFSET = 64
+
+function scrollToHash(href: string) {
+  const el = document.querySelector(href)
+  if (!el) return
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const top = el.getBoundingClientRect().top + window.scrollY - NAV_OFFSET
+  window.scrollTo({ top, behavior: prefersReduced ? 'auto' : 'smooth' })
+  history.replaceState(null, '', href)
+}
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -19,6 +32,17 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  // Intercept in-page anchor clicks so navigation doesn't race the mobile-menu
+  // close animation — on mobile, unmounting the tapped link mid-click can
+  // otherwise cancel the native hash jump entirely.
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) return
+    e.preventDefault()
+    setMenuOpen(false)
+    // Let the menu-close state settle before measuring/scrolling.
+    requestAnimationFrame(() => scrollToHash(href))
+  }
 
   return (
     <motion.nav
@@ -31,7 +55,7 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2.5 group">
+        <a href="#hero" onClick={(e) => handleNavClick(e, '#hero')} className="flex items-center gap-2.5 group">
           <img src="/logo.webp" alt="WIN Solutions" width={36} height={36} className="h-9 w-9 rounded-full object-cover" />
           <span className="hidden sm:block text-white font-black text-sm tracking-widest uppercase opacity-80 group-hover:opacity-100 transition-opacity">
             WIN SOLUTIONS
@@ -44,6 +68,7 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
+                onClick={(e) => handleNavClick(e, l.href)}
                 className="relative text-sm text-white/85 hover:text-white transition-colors duration-200 group py-1"
               >
                 {l.label}
@@ -56,6 +81,7 @@ export default function Navbar() {
         {/* CTA */}
         <a
           href="#contact"
+          onClick={(e) => handleNavClick(e, '#contact')}
           className="hidden md:inline-flex items-center gap-1.5 bg-accent text-black text-xs font-black px-5 py-2.5 tracking-wider uppercase transition-all duration-200 hover:bg-white"
         >
           התחל עכשיו
@@ -99,7 +125,7 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     className="block text-white/80 hover:text-accent py-3 text-sm border-b border-white/5 last:border-0 transition-colors"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, l.href)}
                   >
                     {l.label}
                   </a>
@@ -109,7 +135,7 @@ export default function Navbar() {
                 <a
                   href="#contact"
                   className="block bg-accent text-black text-center font-black text-xs px-5 py-3 tracking-wider uppercase"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => handleNavClick(e, '#contact')}
                 >
                   התחל עכשיו
                 </a>
